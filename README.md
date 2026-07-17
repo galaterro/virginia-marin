@@ -26,7 +26,7 @@ Los textos e imágenes marcados con `[...]` o "pendiente" son provisionales hast
 - [ ] Fotos reales (portada, retrato, portadas de libros, galería) — exportarlas de Canva y ponerlas en `src/assets/` usando `astro:assets`
 - [ ] Enlaces reales: revistas/fanzines con poemas, Substack, redes sociales, compra del libro
 - [ ] Título y descripción de los libros
-- [ ] Dominio definitivo en `astro.config.mjs` (opción `site`)
+- [x] Dominio: `virginiamarin.com`, ya configurado en `astro.config.mjs`
 
 ## Despliegue
 
@@ -34,8 +34,15 @@ El dominio está gestionado en Cloudflare. Dos opciones, ambas con deploy autom�
 
 **Opción A — Netlify (recomendada por el formulario):**
 el formulario de contacto ya está preparado para [Netlify Forms](https://docs.netlify.com/forms/setup/)
-(100 envíos/mes gratis, sin backend). Conectar el repo en Netlify, y en Cloudflare DNS crear un
-`CNAME` hacia el subdominio de Netlify. `netlify.toml` ya define build y carpeta de publicación.
+(100 envíos/mes gratis, sin backend). `netlify.toml` ya define build y carpeta de publicación.
+
+1. En Netlify: *Add new site → Import an existing project*, elegir el repo de GitHub. Detecta la build sola.
+2. En Netlify: *Domain management → Add custom domain* → `virginiamarin.com` (añadir también `www.virginiamarin.com`).
+3. En Cloudflare (DNS de `virginiamarin.com`), crear dos registros **con el proxy desactivado (nube gris, "DNS only")**, porque Netlify ya hace de CDN y el proxy de Cloudflare interfiere con su certificado SSL:
+   - `CNAME` · nombre `www` · destino `<nombre-del-sitio>.netlify.app`
+   - `CNAME` · nombre `@` (apex) · destino `<nombre-del-sitio>.netlify.app` (Cloudflare lo aplana automáticamente)
+4. En Netlify: *Domain management → HTTPS*, esperar a que emita el certificado (Let's Encrypt, automático).
+5. Tras el primer deploy, comprobar en *Forms* que aparece el formulario `contacto` y activar la notificación por email en *Forms → Form notifications*.
 
 **Opción B — Cloudflare Workers/Pages:**
 todo queda en Cloudflare (DNS + hosting), pero el formulario necesita un servicio externo
