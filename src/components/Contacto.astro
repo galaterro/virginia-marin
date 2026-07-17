@@ -1,0 +1,117 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<section id="contacto" class="section">
+  <div class="container">
+    <SectionTitle es="Contacto" en="Contact" />
+
+    <p class="intro">
+      Para encargos, colaboraciones o cualquier consulta puedes escribirme a través del formulario.
+      <span class="todo">[Ajustar al texto final del Canva.]</span>
+    </p>
+
+    <div class="cols">
+      <div class="side">
+        <div class="ph photo"><span>Foto — escritorio / estudio</span></div>
+        <ul class="social">
+          <!-- Enlaces pendientes: URLs reales de sus perfiles -->
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Substack</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!--
+        Formulario preparado para Netlify Forms (funciona solo al desplegar en Netlify).
+        Si al final se despliega en Cloudflare Pages, cambiarlo a un servicio tipo
+        Web3Forms/Formspree: action="https://..." y quitar los atributos data-netlify.
+      -->
+      <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contacto" />
+        <p class="hidden" aria-hidden="true">
+          <label>No rellenar: <input name="bot-field" /></label>
+        </p>
+        <label>
+          Nombre
+          <input type="text" name="nombre" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Mensaje
+          <textarea name="mensaje" rows="6" required></textarea>
+        </label>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  .social {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+  }
+
+  form input,
+  form textarea {
+    display: block;
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.6rem 0.8rem;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  form input:focus,
+  form textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+
+  @media (max-width: 720px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

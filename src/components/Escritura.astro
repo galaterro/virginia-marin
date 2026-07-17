@@ -1,0 +1,143 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<section id="escritura" class="section section--alt">
+  <div class="container">
+    <SectionTitle es="Escritura" en="Writing" />
+
+    <div class="cols">
+      <div>
+        <h3>Libros publicados</h3>
+
+        <article class="book">
+          <div class="ph cover"><span>Portada</span></div>
+          <div>
+            <h4>[Título del libro]</h4>
+            <p class="quote">«[Cita o verso destacado del libro.]»</p>
+            <p class="todo">[Breve descripción del poemario.]</p>
+            <a class="btn" href="#">Comprar</a>
+          </div>
+        </article>
+
+        <article class="book">
+          <div class="ph cover"><span>Portada</span></div>
+          <div>
+            <h4>[Segundo título]</h4>
+            <p class="quote">«[Cita o verso destacado.]»</p>
+            <p class="todo">[Descripción y dónde leerlo o conseguirlo.]</p>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <h3>Sobre su obra <span class="todo">[ajustar título al del Canva]</span></h3>
+        <blockquote>
+          «[Cita de reseña o fragmento sobre la obra.]»
+          <cite>— [Autoría de la reseña]</cite>
+        </blockquote>
+        <blockquote>
+          «[Segunda cita o fragmento.]»
+          <cite>— [Autoría]</cite>
+        </blockquote>
+        <p>
+          <a href="#">Artículos de Substack</a>
+          <span class="todo">[enlace pendiente]</span>
+        </p>
+      </aside>
+    </div>
+
+    <h3 class="poems-title">Poemas publicados en revistas y fanzines</h3>
+    <!-- Sustituir por los enlaces reales del Canva (revistas y fanzines) -->
+    <ul class="poems">
+      <li><a href="#">[Revista — «Título del poema»]</a></li>
+      <li><a href="#">[Revista — «Título del poema»]</a></li>
+      <li><a href="#">[Fanzine — «Título del poema»]</a></li>
+      <li><a href="#">[Fanzine — «Título del poema»]</a></li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3.5rem;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+  }
+
+  .book h4 {
+    margin: 0 0 0.4rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .cover {
+    aspect-ratio: 2 / 3;
+  }
+
+  .quote {
+    font-style: italic;
+    color: var(--accent-dark);
+    margin: 0 0 0.6rem;
+  }
+
+  aside blockquote {
+    margin: 0 0 1.5rem;
+    font-style: italic;
+    border-left: 2px solid var(--rule);
+    padding-left: 1.2rem;
+  }
+
+  aside cite {
+    display: block;
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+  }
+
+  .poems-title {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .poems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem 2.5rem;
+    justify-items: center;
+  }
+
+  @media (max-width: 820px) {
+    .cols {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .poems {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .book {
+      grid-template-columns: 100px 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,153 @@
+/* Tokens de diseño derivados del Canva de Virginia */
+:root {
+  --bg: #f7f5f0;
+  --surface: #fffdf9;
+  --ink: #3e4347;
+  --ink-soft: #71797f;
+  --accent: #2fb0cf;
+  --accent-dark: #1e87a3;
+  --mist-a: #9fb3c0;
+  --mist-b: #dfe6e9;
+  --sea-a: #5f9cb8;
+  --sea-b: #cfe0e6;
+  --rule: #d8d3c8;
+
+  --font-display: "Alex Brush", cursive;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.container {
+  width: min(1080px, 92vw);
+  margin-inline: auto;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.section {
+  padding-block: 4.5rem;
+}
+
+.section--alt {
+  background: var(--surface);
+}
+
+/* Título de sección bilingüe (castellano + inglés) */
+.section-title {
+  text-align: center;
+  margin: 0 0 2.75rem;
+}
+
+.section-title h2 {
+  font-weight: 500;
+  font-size: 2.2rem;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.section-title small {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 1px;
+  background: var(--rule);
+  margin: 1.4rem auto 0;
+}
+
+/* Huecos de imagen provisionales hasta exportar las fotos reales de Canva */
+.ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: linear-gradient(160deg, var(--mist-a), var(--mist-b));
+  color: rgb(255 255 255 / 0.85);
+  overflow: hidden;
+}
+
+.ph--sea {
+  background: linear-gradient(160deg, var(--sea-a), var(--sea-b));
+}
+
+.ph > span {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 1rem;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.5rem 1.6rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+/* Texto pendiente de sustituir por el contenido final del Canva */
+.todo {
+  color: var(--ink-soft);
+  font-style: italic;
+}

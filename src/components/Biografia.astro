@@ -1,0 +1,59 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<section id="biografia" class="section">
+  <div class="container">
+    <SectionTitle es="Biografía" en="About me" />
+    <div class="bio">
+      <div class="ph portrait"><span>Retrato — foto pendiente</span></div>
+      <div class="texts">
+        <p>
+          Nació en Madrid en 1992. Es escritora, traductora y poeta.
+          <span class="todo">[Completar con la biografía en castellano del diseño de Canva.]</span>
+        </p>
+        <p lang="en">
+          She was born in Madrid in 1992. She is a writer, translator and poet.
+          <span class="todo">[Complete with the English bio from the Canva design.]</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bio {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .texts p {
+    margin: 0;
+  }
+
+  .texts p + p {
+    margin-top: 1.5rem;
+  }
+
+  p[lang="en"] {
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 720px) {
+    .bio {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait {
+      max-width: 320px;
+      width: 100%;
+      margin-inline: auto;
+    }
+  }
+</style>

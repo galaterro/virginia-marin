@@ -1,0 +1,60 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+
+// Huecos de la galería — sustituir por las fotos reales exportadas de Canva
+const tiles = [
+  { label: "Delfines", sea: true, tall: true },
+  { label: "Ave", sea: false, tall: false },
+  { label: "Lagarto", sea: false, tall: false },
+  { label: "Luna", sea: true, tall: false },
+  { label: "Primate", sea: false, tall: true },
+  { label: "Mar", sea: true, tall: false },
+];
+---
+
+<section id="fotografia" class="section section--alt">
+  <div class="container">
+    <SectionTitle es="Fotografía de naturaleza" en="Nature photography" />
+
+    <div class="gallery">
+      {
+        tiles.map((tile) => (
+          <div class:list={["ph", { "ph--sea": tile.sea, tall: tile.tall }]}>
+            <span>{tile.label}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="credit">
+      Todas las fotografías son de autoría propia.
+      <span class="todo">[Confirmar el texto exacto del Canva.]</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 220px;
+    gap: 0.8rem;
+  }
+
+  .tall {
+    grid-row: span 2;
+  }
+
+  .credit {
+    text-align: center;
+    margin: 2.5rem 0 0;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 720px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 160px;
+    }
+  }
+</style>

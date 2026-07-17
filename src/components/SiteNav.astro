@@ -1,0 +1,69 @@
+---
+const links = [
+  { href: "#inicio", es: "Inicio", en: "Home" },
+  { href: "#biografia", es: "Biografía", en: "About me" },
+  { href: "#escritura", es: "Escritura", en: "Writing" },
+  { href: "#traduccion", es: "Traducción", en: "Translation" },
+  { href: "#fotografia", es: "Fotografía de naturaleza", en: "Nature photography" },
+  { href: "#contacto", es: "Contacto", en: "Contact" },
+];
+---
+
+<nav class="site-nav" aria-label="Secciones">
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href}>
+            <span class="es">{link.es}</span>
+            <span class="en">{link.en}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgb(247 245 240 / 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 2.2rem;
+  }
+
+  a {
+    display: grid;
+    justify-items: center;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .es {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .en {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  a:hover .es {
+    color: var(--accent-dark);
+  }
+</style>

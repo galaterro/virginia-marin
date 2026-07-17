@@ -1,0 +1,50 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<section id="traduccion" class="section">
+  <div class="container">
+    <SectionTitle es="Traducción" en="Translation" />
+
+    <div class="cols">
+      <div class="texts">
+        <p>
+          Soy traductora literaria de inglés a castellano.
+          <span class="todo">
+            [Completar con el texto del Canva: proyectos de traducción, editoriales, tipo de obras.]
+          </span>
+        </p>
+        <p class="todo">
+          [Intereses: literatura de naturaleza, divulgación y ensayo, ecología, filosofía…]
+        </p>
+
+        <h3>Libros publicados</h3>
+        <p class="todo">Próximamente…</p>
+      </div>
+      <div class="ph photo"><span>Foto — corzos en la niebla</span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .texts p {
+    margin: 0 0 1.3rem;
+  }
+
+  .photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (max-width: 720px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

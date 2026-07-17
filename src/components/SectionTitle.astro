@@ -1,0 +1,13 @@
+---
+interface Props {
+  es: string;
+  en: string;
+}
+
+const { es, en } = Astro.props;
+---
+
+<div class="section-title">
+  <h2>{es}</h2>
+  <small>{en}</small>
+</div>
