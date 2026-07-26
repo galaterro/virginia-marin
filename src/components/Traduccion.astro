@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import SectionTitle from "./SectionTitle.astro";
+import corzos from "../assets/images/traduccion-dos-corzos.jpg";
 ---
 
 <section id="traduccion" class="section">
@@ -9,19 +11,45 @@ import SectionTitle from "./SectionTitle.astro";
     <div class="cols">
       <div class="texts">
         <p>
-          Soy traductora literaria de inglés a castellano.
-          <span class="todo">
-            [Completar con el texto del Canva: proyectos de traducción, editoriales, tipo de obras.]
-          </span>
+          Soy traductora literaria de inglés a castellano. Hasta la fecha he participado en proyectos de
+          traducción con editoriales trabajando distintos géneros literarios, épocas y estilos.
         </p>
-        <p class="todo">
-          [Intereses: literatura de naturaleza, divulgación y ensayo, ecología, filosofía…]
+        <p>
+          Mis intereses incluyen la <strong
+            >literatura de naturaleza, divulgación y ensayo académico, ecología, feminismos, literatura
+            gótica y de terror, mitología, filosofía, psicología y neurodivergencias</strong
+          >, entre otros temas.
         </p>
-
-        <h3>Libros publicados</h3>
-        <p class="todo">Próximamente…</p>
+        <p>
+          Como traductora busco ser fiel a la esencia del texto original, así como a la voz de la autora o
+          autor sin perder la naturalidad y el ritmo del castellano. Mi compromiso con el texto a traducir
+          es total: investigo, buceo en el contexto de la autora/autor y me empapo del universo de la obra
+          para poder ofrecer la mejor versión del texto en castellano.
+        </p>
       </div>
-      <div class="ph photo"><span>Foto — corzos en la niebla</span></div>
+
+      <div class="side">
+        <Image
+          src={corzos}
+          alt="Fotografía de dos corzos en la niebla tomada por la autora Virginia Marín"
+          class="photo"
+          widths={[420, 640, 900]}
+          sizes="(max-width: 820px) 92vw, 46vw"
+          width={900}
+          height={675}
+        />
+        <p class="quote">
+          Como poeta siento que ambas, poesía y traducción, son dos artes gemelas que, lejos de pretender la
+          mímesis, buscan la reescritura bien sea de experiencias que difícilmente pueden narrarse de otra
+          manera, en el caso de la voz poética, bien del texto original en la lengua destino, en el caso de
+          la traducción.
+        </p>
+      </div>
+    </div>
+
+    <div class="books">
+      <h3 class="col-title">Libros publicados</h3>
+      <p class="soon">Próximamente…</p>
     </div>
   </div>
 </section>
@@ -36,13 +64,36 @@ import SectionTitle from "./SectionTitle.astro";
 
   .texts p {
     margin: 0 0 1.3rem;
+    text-align: justify;
   }
 
   .photo {
+    width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
+    object-fit: cover;
   }
 
-  @media (max-width: 720px) {
+  .quote {
+    margin: 1.6rem 0 0;
+    text-align: center;
+  }
+
+  .books {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .books .col-title {
+    margin-bottom: 0.8rem;
+  }
+
+  .soon {
+    margin: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 820px) {
     .cols {
       grid-template-columns: 1fr;
     }

@@ -1,18 +1,19 @@
 ---
-const links = [
-  { href: "#inicio", es: "Inicio", en: "Home" },
-  { href: "#biografia", es: "Biografía", en: "About me" },
-  { href: "#escritura", es: "Escritura", en: "Writing" },
-  { href: "#traduccion", es: "Traducción", en: "Translation" },
-  { href: "#fotografia", es: "Fotografía de naturaleza", en: "Nature photography" },
-  { href: "#contacto", es: "Contacto", en: "Contact" },
-];
+import { navLinks } from "../data/nav";
+
+interface Props {
+  // "hero" se superpone sobre la foto de portada; "sticky" es la barra que
+  // aparece al dejar atrás el hero.
+  variant?: "hero" | "sticky";
+}
+
+const { variant = "sticky" } = Astro.props;
 ---
 
-<nav class="site-nav" aria-label="Secciones">
+<nav class:list={["site-nav", `site-nav--${variant}`]} aria-label="Secciones">
   <ul>
     {
-      links.map((link) => (
+      navLinks.map((link) => (
         <li>
           <a href={link.href}>
             <span class="es">{link.es}</span>
@@ -24,16 +25,21 @@ const links = [
   </ul>
 </nav>
 
-<style>
-  .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgb(247 245 240 / 0.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--rule);
-  }
+<script>
+  // La barra fija sólo se muestra cuando el hero (que ya lleva su propia nav)
+  // deja de estar a la vista.
+  const sticky = document.querySelector(".site-nav--sticky");
+  const hero = document.querySelector("#inicio");
 
+  if (sticky && hero) {
+    new IntersectionObserver(
+      ([entry]) => sticky.classList.toggle("is-visible", !entry.isIntersecting),
+      { rootMargin: "-70px 0px 0px 0px" },
+    ).observe(hero);
+  }
+</script>
+
+<style>
   ul {
     list-style: none;
     margin: 0;
@@ -65,5 +71,53 @@ const links = [
 
   a:hover .es {
     color: var(--accent-dark);
+  }
+
+  /* Nav superpuesta sobre la foto del hero */
+  .site-nav--hero .es {
+    text-shadow: 0 1px 3px rgb(255 255 255 / 0.55);
+  }
+
+  .site-nav--hero .en {
+    color: #5c666d;
+    text-shadow: 0 1px 3px rgb(255 255 255 / 0.55);
+  }
+
+  /* Barra fija: oculta hasta pasar el hero */
+  .site-nav--sticky {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 10;
+    background: rgb(247 245 240 / 0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+    opacity: 0;
+    translate: 0 -100%;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      translate 0.25s ease;
+  }
+
+  .site-nav--sticky.is-visible {
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav--sticky {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    ul {
+      gap: 0.4rem 1.2rem;
+    }
+
+    .es {
+      font-size: 0.98rem;
+    }
   }
 </style>

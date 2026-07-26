@@ -7,12 +7,12 @@ import Escritura from "../components/Escritura.astro";
 import Traduccion from "../components/Traduccion.astro";
 import Fotografia from "../components/Fotografia.astro";
 import Contacto from "../components/Contacto.astro";
-import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
+  <!-- El hero lleva su propia navegación superpuesta; esta barra aparece al dejarlo atrás. -->
+  <SiteNav variant="sticky" />
   <Hero />
-  <SiteNav />
   <main>
     <Biografia />
     <Escritura />
@@ -20,5 +20,4 @@ import Footer from "../components/Footer.astro";
     <Fotografia />
     <Contacto />
   </main>
-  <Footer />
 </Layout>

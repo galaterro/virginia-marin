@@ -1,61 +1,86 @@
 ---
+import { Image } from "astro:assets";
 import SectionTitle from "./SectionTitle.astro";
+import corzo from "../assets/images/galeria-corzo.jpg";
+import delfin from "../assets/images/galeria-delfin.jpg";
+import lagarto from "../assets/images/galeria-lagarto.jpg";
+import mono from "../assets/images/galeria-mono-aullador.jpeg";
+import caballito from "../assets/images/galeria-caballito-del-diablo.jpg";
+import petirrojo from "../assets/images/galeria-petirrojo-luna.jpg";
 
-// Huecos de la galería — sustituir por las fotos reales exportadas de Canva
+// Orden de la cuadrícula del Canva: de izquierda a derecha y de arriba a abajo.
 const tiles = [
-  { label: "Delfines", sea: true, tall: true },
-  { label: "Ave", sea: false, tall: false },
-  { label: "Lagarto", sea: false, tall: false },
-  { label: "Luna", sea: true, tall: false },
-  { label: "Primate", sea: false, tall: true },
-  { label: "Mar", sea: true, tall: false },
-  { label: "Bosque", sea: false, tall: false },
+  { src: corzo, alt: "Corzo en la niebla" },
+  { src: delfin, alt: "Delfín mular en el océano Atlántico" },
+  { src: lagarto, alt: "Lagarto tizón" },
+  { src: mono, alt: "Mono aullador" },
+  { src: caballito, alt: "Caballito del diablo azul" },
+  { src: petirrojo, alt: "Petirrojo europeo sobre fondo de luna llena, doble exposición" },
 ];
 ---
 
-<section id="fotografia" class="section section--alt">
+<section id="fotografia" class="photos">
   <div class="container">
     <SectionTitle es="Fotografía de naturaleza" en="Nature photography" />
-
-    <div class="gallery">
-      {
-        tiles.map((tile) => (
-          <div class:list={["ph", { "ph--sea": tile.sea, tall: tile.tall }]}>
-            <span>{tile.label}</span>
-          </div>
-        ))
-      }
-    </div>
-
-    <p class="credit">
-      Todas las fotografías son de autoría propia.
-      <span class="todo">[Confirmar el texto exacto del Canva.]</span>
-    </p>
   </div>
+
+  <div class="gallery">
+    {
+      tiles.map((tile) => (
+        <Image
+          src={tile.src}
+          alt={tile.alt}
+          class="tile"
+          widths={[420, 700, 900]}
+          sizes="(max-width: 560px) 100vw, 50vw"
+          width={900}
+          height={600}
+        />
+      ))
+    }
+  </div>
+
+  <p class="credit">
+    <span class="mark">©Virginia Marín</span>
+    <span>Todas las fotografías son de animales en libertad</span>
+  </p>
 </section>
 
 <style>
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 220px;
-    gap: 0.8rem;
+  .photos {
+    background: var(--surface);
+    padding-block: 4.5rem 0;
   }
 
-  .tall {
-    grid-row: span 2;
+  /* Cuadrícula a sangre: dos columnas, sin márgenes ni separación */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tile {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 
   .credit {
+    display: grid;
+    gap: 0.2rem;
     text-align: center;
-    margin: 2.5rem 0 0;
-    color: var(--ink-soft);
+    margin: 0;
+    padding: 2.2rem 1rem 4.5rem;
   }
 
-  @media (max-width: 720px) {
+  .mark {
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 560px) {
     .gallery {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 160px;
+      grid-template-columns: 1fr;
     }
   }
 </style>
