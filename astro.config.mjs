@@ -10,8 +10,8 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Alex Brush",
-      cssVariable: "--font-alex-brush",
+      name: "Water Brush",
+      cssVariable: "--font-water-brush",
       weights: [400],
       styles: ["normal"],
       // Sin `fallbacks`: el valor por defecto (sans-serif) deja que Astro genere

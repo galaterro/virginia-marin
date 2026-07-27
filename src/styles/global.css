@@ -11,11 +11,15 @@
   --accent-dark: #1b7a93;
   --accent-soft: #5695b6;
   --accent-text: #447690;
+  /* Azul del título del hero, tomado del Canva. Sobre la foto sólo llega al
+     contraste mínimo gracias al velo blanco de `.hero-inner`; si se quita el
+     velo, hay que oscurecerlo. */
+  --title: #1e466e;
   --rule: #d8d3c8;
 
   /* Las pilas completas (con el fallback de métricas ajustadas) las genera
      Astro a partir de `fonts` en astro.config.mjs. */
-  --font-display: var(--font-alex-brush);
+  --font-display: var(--font-water-brush);
   --font-hand: var(--font-caveat);
   --font-serif: var(--font-cormorant);
 }
