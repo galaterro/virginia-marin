@@ -1,5 +1,30 @@
 ---
+import { Image } from "astro:assets";
+import BotanicalBand from "./BotanicalBand.astro";
 import SectionTitle from "./SectionTitle.astro";
+import vocesDeBosqueCover from "../assets/images/voces-de-bosque-portada.jpg";
+import premioEnElMar from "../assets/images/si-pudiera-ser-ave-premio.jpg";
+
+const poemas = [
+  {
+    href: "https://digopalabratxt.com/2025/01/05/tres-poemas-de-virginia-marin-espana/",
+    label: "Revista Digo.Palabra",
+  },
+  {
+    href: "https://aullidolit.com/genocidio-inedito-muestra-poesia-virginia-marin/",
+    label: "Revista Aullido",
+  },
+  { href: "https://ko-fi.com/s/4aca6e8dff", label: "Fanzine Arrebol - Tierra" },
+  { href: "https://ko-fi.com/s/54276300ee", label: "Fanzine Arrebol - Animal" },
+  { href: "https://ko-fi.com/s/5c7287f3a7", label: "Fanzine Arrebol - Cosmos" },
+];
+
+const resenas = [
+  "Un paseo poético e íntimo por la naturaleza, escrito en una prosa limpia, pero cargada de belleza y asombro.",
+  "La poesía gótica, ecofeminista y apocalíptica de Virginia guarda entre sus versos embarrados palabras bellísimas con imágenes oscuras y terribles.",
+  "Voces de bosque es un libro profundamente personal y escrito con una sensibilidad extraordinaria. A través de sus paseos por un bosque del sur de Inglaterra, la autora nos invita a descubrir un paisaje bucólico y a sus habitantes, a través de una mirada poética muy personal. El bosque no es solo un escenario, es también un espejo en el que la autora se va encontrando a sí misma. Sus sensaciones, sus pensamientos y su experiencia personal se entrelazan con la naturaleza de una forma muy delicada y conmovedora. Un libro inolvidable en el que la naturaleza se transforma en refugio, espejo y respuesta.",
+  "Virginia da voz a todas las voces, nos arrastra como ceniza para escribir un incendio (...) su originalidad y sensibilidad, un libro coral con seres que hablan sin voz, por removernos la mirada y por hacernos seres mutables de este proceso, de esta transformación (...)",
+];
 ---
 
 <section id="escritura" class="section section--alt">
@@ -8,53 +33,89 @@ import SectionTitle from "./SectionTitle.astro";
 
     <div class="cols">
       <div>
-        <h3>Libros publicados</h3>
+        <h3 class="col-title">Libros publicados</h3>
 
         <article class="book">
-          <div class="ph cover"><span>Portada</span></div>
+          <Image
+            src={vocesDeBosqueCover}
+            alt="Cubierta del libro Voces de bosque, de Virginia Marín"
+            class="cover"
+            width={400}
+            height={600}
+          />
           <div>
-            <h4>[Título del libro]</h4>
-            <p class="quote">«[Cita o verso destacado del libro.]»</p>
-            <p class="todo">[Breve descripción del poemario.]</p>
-            <a class="btn" href="#">Comprar</a>
+            <p class="verse">hay crisálidas entre mis costillas<br />pelaje de corzo bajo mis fascias</p>
+            <h4>Voces de bosque</h4>
+            <p class="genre">Prosa poética, literatura</p>
+            <p>
+              Una historia en primera persona sobre mi vida en UK en un bosque centenario, repleta de
+              avistamientos salvajes y amor por la naturaleza.
+            </p>
+            <a
+              class="btn"
+              href="https://www.tundraediciones.es/index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=905&virtuemart_category_id=25&lang=es"
+              target="_blank"
+              rel="noopener"
+            >
+              Comprar
+            </a>
           </div>
         </article>
 
         <article class="book">
-          <div class="ph cover"><span>Portada</span></div>
+          <Image
+            src={premioEnElMar}
+            alt="Página del accésit del V premio En el Mar para el poemario Si pudiera ser ave y traer un río en la boca"
+            class="cover"
+            width={400}
+            height={600}
+          />
           <div>
-            <h4>[Segundo título]</h4>
-            <p class="quote">«[Cita o verso destacado.]»</p>
-            <p class="todo">[Descripción y dónde leerlo o conseguirlo.]</p>
+            <p class="verse">me despierto con rescoldos en la lengua<br />y ceniza entre los párpados</p>
+            <h4>Si pudiera ser ave y traer un río en la boca</h4>
+            <p class="genre">Poesía</p>
+            <p>
+              Ganador del accésit del V premio en el mar.<br />Previsto para finales de 2026.
+            </p>
+            <a class="btn" href="https://www.edicionesenelmar.com/premio-en-el-mar/" target="_blank" rel="noopener">
+              Saber más
+            </a>
           </div>
         </article>
+
+        <h3 class="col-title poems-title">Poemas publicados en revistas y fanzines</h3>
+        <ul class="poems">
+          {
+            poemas.map((poema) => (
+              <li>
+                <a href={poema.href} target="_blank" rel="noopener">
+                  {poema.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
 
       <aside>
-        <h3>Sobre su obra <span class="todo">[ajustar título al del Canva]</span></h3>
-        <blockquote>
-          «[Cita de reseña o fragmento sobre la obra.]»
-          <cite>— [Autoría de la reseña]</cite>
-        </blockquote>
-        <blockquote>
-          «[Segunda cita o fragmento.]»
-          <cite>— [Autoría]</cite>
-        </blockquote>
-        <p>
-          <a href="#">Artículos de Substack</a>
-          <span class="todo">[enlace pendiente]</span>
-        </p>
+        <h3 class="col-title">Han dicho de sus obras...</h3>
+        {
+          resenas.map((resena, i) => (
+            <>
+              {i > 0 && <div class="divider" role="presentation"><span /></div>}
+              <blockquote>{resena}</blockquote>
+            </>
+          ))
+        }
       </aside>
     </div>
 
-    <h3 class="poems-title">Poemas publicados en revistas y fanzines</h3>
-    <!-- Sustituir por los enlaces reales del Canva (revistas y fanzines) -->
-    <ul class="poems">
-      <li><a href="#">[Revista — «Título del poema»]</a></li>
-      <li><a href="#">[Revista — «Título del poema»]</a></li>
-      <li><a href="#">[Fanzine — «Título del poema»]</a></li>
-      <li><a href="#">[Fanzine — «Título del poema»]</a></li>
-    </ul>
+    <div class="substack">
+      <h3 class="col-title">Artículos de Substack</h3>
+      <p><a href="https://virpmar.substack.com" target="_blank" rel="noopener">océanos y conjuros</a></p>
+    </div>
+
+    <BotanicalBand maxWidth="760px" />
   </div>
 </section>
 
@@ -65,72 +126,84 @@ import SectionTitle from "./SectionTitle.astro";
     gap: 3.5rem;
   }
 
-  h3 {
-    margin-top: 0;
-  }
-
   .book {
     display: grid;
     grid-template-columns: 140px 1fr;
     gap: 1.5rem;
     align-items: start;
-    margin-bottom: 2.5rem;
-  }
-
-  .book h4 {
-    margin: 0 0 0.4rem;
-    font-size: 1.3rem;
-    font-weight: 600;
+    margin-bottom: 2.8rem;
   }
 
   .cover {
+    width: 100%;
+    height: auto;
     aspect-ratio: 2 / 3;
+    object-fit: cover;
   }
 
-  .quote {
+  /* El verso va sobre el título del libro, en manuscrita (como en el Canva) */
+  .verse {
+    font-family: var(--font-hand);
+    font-size: 1.35rem;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 1rem;
+  }
+
+  .book h4 {
+    margin: 0 0 0.2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     font-style: italic;
-    color: var(--accent-dark);
-    margin: 0 0 0.6rem;
+    color: var(--accent-text);
   }
 
-  aside blockquote {
-    margin: 0 0 1.5rem;
-    font-style: italic;
-    border-left: 2px solid var(--rule);
-    padding-left: 1.2rem;
+  .book p {
+    margin: 0 0 0.7rem;
   }
 
-  aside cite {
-    display: block;
-    font-style: normal;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin-top: 0.4rem;
+  .genre {
+    font-weight: 600;
   }
 
   .poems-title {
-    margin-top: 3rem;
-    text-align: center;
+    text-align: left;
+    margin-top: 2.5rem;
   }
 
   .poems {
-    list-style: none;
-    padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.6rem 2.5rem;
-    justify-items: center;
+    padding-left: 1.6rem;
+  }
+
+  .poems li {
+    margin-bottom: 0.7rem;
+  }
+
+  .poems a {
+    font-style: italic;
+  }
+
+  aside blockquote {
+    margin: 0;
+    font-style: italic;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  .substack {
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+
+  .substack p {
+    margin: 0;
   }
 
   @media (max-width: 820px) {
     .cols {
       grid-template-columns: 1fr;
       gap: 2.5rem;
-    }
-
-    .poems {
-      grid-template-columns: 1fr;
     }
   }
 

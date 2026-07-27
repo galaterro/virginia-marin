@@ -1,35 +1,71 @@
-<section id="inicio" class="hero ph" aria-label="Inicio">
-  <h1>Virginia&nbsp;Marin</h1>
-  <span class="hero-note">Imagen provisional — sustituir por la foto de portada de Canva</span>
+---
+import { Image } from "astro:assets";
+import SiteNav from "./SiteNav.astro";
+import heroPhoto from "../assets/images/hero-corzo-niebla.jpg";
+---
+
+<section id="inicio" class="hero" aria-label="Inicio">
+  <Image
+    src={heroPhoto}
+    alt="Fotografía de un corzo salvaje en la niebla tomada por la autora Virginia Marín"
+    class="hero-photo"
+    widths={[640, 960, 1280, 1800]}
+    sizes="100vw"
+    width={1800}
+    height={1013}
+    priority
+  />
+  <div class="hero-inner">
+    <h1>Virginia&nbsp;Marin</h1>
+    <SiteNav variant="hero" />
+  </div>
 </section>
 
 <style>
   .hero {
-    min-height: 72vh;
-    border-radius: 0;
-    background:
-      radial-gradient(ellipse at 72% 85%, rgb(52 66 78 / 0.4), transparent 55%),
-      linear-gradient(165deg, #aebfca 0%, #cfd9df 45%, #97aab8 100%);
+    position: relative;
+    aspect-ratio: 16 / 9;
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 45%;
+  }
+
+  /* Velo claro muy suave: sube el contraste del título oscuro sobre la niebla */
+  .hero-inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8%;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.3), transparent 55%);
   }
 
   h1 {
     font-family: var(--font-display);
     font-weight: 400;
-    color: #fff;
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    margin: 0;
-    text-shadow: 0 2px 18px rgb(40 55 70 / 0.35);
+    color: var(--title);
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    line-height: 1.1;
+    margin: 0 0 clamp(2rem, 9vw, 8.5rem);
+    text-shadow: 0 1px 10px rgb(255 255 255 / 0.45);
   }
 
-  .hero-note {
-    position: absolute;
-    right: 1rem;
-    bottom: 0.8rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgb(255 255 255 / 0.65);
-    padding: 0;
-    text-shadow: none;
+  @media (max-width: 720px) {
+    .hero {
+      aspect-ratio: 3 / 4;
+    }
+
+    .hero-inner {
+      padding-top: 12%;
+    }
   }
 </style>

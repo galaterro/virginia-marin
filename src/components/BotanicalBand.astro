@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import ilustraciones from "../assets/images/ilustraciones-botanicas.png";
+
+interface Props {
+  /**
+   * Ancho máximo de la banda. En el Canva cierra Escritura a lo ancho y
+   * reaparece más pequeña al final de Traducción.
+   */
+  maxWidth?: string;
+}
+
+const { maxWidth = "620px" } = Astro.props;
+---
+
+{/* Decorativa: alt vacío para que los lectores de pantalla la ignoren. */}
+<div class="botanical" style={`--banda-ancho: ${maxWidth}`}>
+  <Image src={ilustraciones} alt="" loading="lazy" />
+</div>
+
+<style>
+  .botanical {
+    width: min(var(--banda-ancho), 92%);
+    margin: 3.5rem auto 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    /* El PNG llega con fondo blanco y sin canal alfa. `multiply` lo funde con
+       el crema del fondo y deja sólo el trazo, sin halos de recorte. */
+    mix-blend-mode: multiply;
+  }
+</style>

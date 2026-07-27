@@ -15,18 +15,26 @@ Sitio estático de una sola página construido con [Astro](https://astro.build),
 ## Estructura
 
 - `src/pages/index.astro` — página única que ensambla las secciones
-- `src/components/` — una sección por componente: Hero, Biografía, Escritura, Traducción, Fotografía, Contacto
+- `src/components/` — una sección por componente: Hero, Biografía, Escritura, Traducción, Fotografía, Contacto.
+  Además, tres piezas compartidas: `SiteNav` (el menú, superpuesto en el hero y fijo al dejarlo atrás),
+  `SectionTitle` (encabezado bilingüe, oculto visualmente) y `BotanicalBand` (la banda vegetal del diseño)
+- `src/data/nav.ts` — lista de secciones del menú; añadir o reordenar aquí, no en los componentes
 - `src/styles/global.css` — paleta y tipografías (tokens del diseño de Canva)
+- `astro.config.mjs` — dominio y las tres tipografías autoalojadas con la API de fuentes de Astro
 
-## Contenido pendiente
+## Estado del contenido
 
-Los textos e imágenes marcados con `[...]` o "pendiente" son provisionales hasta que el diseño de Canva esté cerrado:
+El diseño de Canva está cerrado y volcado: ya no queda ningún placeholder en `src/`.
 
-- [ ] Textos definitivos de biografía (castellano e inglés), escritura, traducción y contacto
-- [ ] Fotos reales (portada, retrato, portadas de libros, galería) — exportarlas de Canva y ponerlas en `src/assets/` usando `astro:assets`
-- [ ] Enlaces reales: revistas/fanzines con poemas, Substack, redes sociales, compra del libro
-- [ ] Título y descripción de los libros
+- [x] Textos definitivos de biografía (castellano e inglés), escritura, traducción y contacto
+- [x] Fotos reales (portada, retrato, portadas de libros, galería) en `src/assets/images/`, servidas con `astro:assets`
+- [x] Enlaces reales: revistas y fanzines con poemas, Substack, redes sociales y compra del libro
+- [x] Título y descripción de los libros
 - [x] Dominio: `virginiamarin.com`, ya configurado en `astro.config.mjs`
+
+Lo único que queda por actualizar es el segundo libro, *Si pudiera ser ave y traer un río en la boca*:
+está previsto para finales de 2026 y de momento enlaza a las bases del premio, así que habrá que
+cambiar ese enlace por el de compra cuando se publique (`src/components/Escritura.astro`).
 
 ## Despliegue
 
