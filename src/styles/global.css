@@ -20,7 +20,6 @@
   /* Las pilas completas (con el fallback de métricas ajustadas) las genera
      Astro a partir de `fonts` en astro.config.mjs. */
   --font-display: var(--font-water-brush);
-  --font-hand: var(--font-caveat);
   --font-serif: var(--font-cormorant);
 }
 
