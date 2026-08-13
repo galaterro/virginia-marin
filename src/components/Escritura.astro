@@ -141,11 +141,15 @@ const resenas = [
     object-fit: cover;
   }
 
-  /* El verso va sobre el título del libro, en manuscrita (como en el Canva) */
+  /* El verso va sobre el título del libro, en la manuscrita del título del hero.
+     Water Brush tiene una altura de x pequeña, así que necesita más cuerpo que
+     una manuscrita normal para leerse al mismo tamaño aparente. El `clamp` evita
+     que en móvil los versos rompan a media línea y pierdan su forma de dos
+     versos: a 1.9rem el más largo no cabe junto a la portada. */
   .verse {
-    font-family: var(--font-hand);
-    font-size: 1.35rem;
-    line-height: 1.35;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 5vw, 1.9rem);
+    line-height: 1.25;
     color: var(--ink);
     margin: 0 0 1rem;
   }
