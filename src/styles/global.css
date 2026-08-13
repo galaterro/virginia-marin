@@ -5,16 +5,22 @@
   --ink: #3e4347;
   --ink-soft: #697176;
   /* Azul de marca de Virginia (#369fd2, tono 200°). Sobre el fondo claro sólo
-     da 2,73:1, así que como texto no llega ni al 3:1: se usa tal cual sólo en
-     lo decorativo (--accent) y los demás niveles son ese mismo tono oscurecido
-     hasta cumplir el contraste mínimo de WCAG AA. Al cambiarlos, mantener el
-     tono en 200° y volver a comprobar el ratio contra --surface (#f5f5f2), que
-     es el fondo más claro de los dos y por tanto el más exigente.
-     --accent sólo decorativo; --accent-soft para títulos grandes (≥24px, 3:1);
-     --accent-text para texto azul pequeño y --accent-dark para enlaces y botones (4.5:1). */
+     da 2,73:1, así que los niveles pensados para texto son ese mismo tono
+     oscurecido hasta cumplir el contraste mínimo de WCAG AA. Al cambiarlos,
+     mantener el tono en 200° y volver a comprobar el ratio contra --surface
+     (#f5f5f2), que es el fondo más claro de los dos y por tanto el más exigente.
+
+     --accent      decorativo (filetes, rombos, outline de foco): sin requisito.
+     --accent-soft títulos de sección. Lleva el azul de marca exacto por
+                   decisión de la autora, que lo quiere tal cual aunque dé
+                   2,73:1 y el mínimo AA para texto grande sea 3:1. Es una
+                   excepción consciente, no un descuido: no lo "arregles" sin
+                   preguntarle. El valor más claro que sí cumpliría es #3397c8.
+     --accent-text texto azul pequeño (4,5:1).
+     --accent-dark enlaces y botones (4,5:1). */
   --accent: #369fd2;
   --accent-dark: #1773a1;
-  --accent-soft: #3090c0;
+  --accent-soft: #369fd2;
   --accent-text: #24759e;
   /* Azul del título del hero, tomado del Canva. Sobre la foto sólo llega al
      contraste mínimo gracias al velo blanco de `.hero-inner`; si se quita el
