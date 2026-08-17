@@ -74,8 +74,9 @@ const { variant = "sticky" } = Astro.props;
 
   /* Nav superpuesta sobre la foto del hero. El tamaño (24.8px) reproduce el del
      Canva y además mantiene las etiquetas en el umbral de "texto grande", que
-     es lo que permite usar el azul del título sobre la foto sin oscurecerlo
-     más. Si se reduce por debajo de 24px hay que bajar --title a #163351. */
+     es lo que permite usar el violeta del título sobre la foto sin oscurecerlo
+     más. Si se reduce por debajo de 24px hay que bajar --title a violet-950
+     (#2f0d68). */
   .site-nav--hero .es {
     font-size: 1.55rem;
     color: var(--title);
